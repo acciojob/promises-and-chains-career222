@@ -1,34 +1,35 @@
-//your JS code here. If required.
+// your JS code here. If required.
+
 const form = document.getElementById("form");
-const age = document,getElementById("age");
+const age = document.getElementById("age");
 const name = document.getElementById("name");
 
-form.addEventListener("submit",function (element){
-	event.preventDefault();
+form.addEventListener("submit", function (element) {
+    element.preventDefault();
 
-	if(age.value == " " || name.value.trim() === " "){
-		alert("Please enter valid detail.");
-		return;
-	}
-	const userAge = Namber(age.value);
-	const userName = name.value.trim();
+    if (age.value === "" || name.value.trim() === "") {
+        alert("Please enter valid details.");
+        return;
+    }
 
-	const promise = new Promise((resolve, reject) => {
-		setTimeout(() => {
-			if(userAge > 18){
-				resolve(`welcome, ${userName}. you can vote .`);
-			}else{
-				reject (`oh sorry ${userName}. you aren't old enough.`);
-			}
-		},4000);
-	});
+    const userAge = Number(age.value);
+    const userName = name.value.trim();
 
-	promise.then((message) =>{
-		alert(message);
+    const promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (userAge > 18) {
+                resolve(`Welcome, ${userName}. You can vote.`);
+            } else {
+                reject(`Oh sorry ${userName}. You aren't old enough.`);
+            }
+        }, 4000);
+    });
 
-	}).catch((message)=>{
-		alert(message);
-	});
-
-	
+    promise
+        .then((message) => {
+            alert(message);
+        })
+        .catch((message) => {
+            alert(message);
+        });
 });
